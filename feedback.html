@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Feedback</title>
+</head>
+
+<body>
+
+<h2>Feedback Form</h2>
+
+<form action="<%= request.getContextPath() %>/feedback" method="post">
+
+
+Name:<br>
+<input type="text" name="name" required><br><br>
+
+Email:<br>
+<input type="email" name="email" required><br><br>
+
+Message:<br>
+<textarea name="message"></textarea><br><br>
+
+Rating:<br>
+<select name="rating">
+<option value="5">5</option>
+<option value="4">4</option>
+<option value="3">3</option>
+<option value="2">2</option>
+<option value="1">1</option>
+</select>
+
+<br><br>
+<button type="submit">Submit</button>
+
+</form>
+
+</body>
+</html>

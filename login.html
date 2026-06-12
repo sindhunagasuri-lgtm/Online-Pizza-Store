@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Becod | Account</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+            url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .glass-box {
+            width: 400px;
+            padding: 40px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            color: white;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 12px;
+            color: #ffbe33;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(0,0,0,0.4);
+            color: white;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #ffbe33;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .toggle-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .toggle-link span {
+            color: #ffbe33;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        #signup-form {
+            display: none;
+        }
+
+        .back-home {
+            display: block;
+            margin-top: 15px;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="glass-box">
+    <i class="fa-solid fa-pizza-slice" style="font-size:40px;color:#ffbe33;margin-bottom:20px;"></i>
+
+    
+    <div id="login-container">
+        <div id="login-container">
+    <h2>LOGIN</h2>
+
+    <form action="login.jsp" method="post">
+
+        <div class="input-group">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" name="email" placeholder="Email Address" required>
+        </div>
+
+        <div class="input-group">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" required>
+        </div>
+
+        
+        <button class="btn" type="submit">START EATING</button>
+       
+
+        <button class="btn" type="button" 
+        style="margin-top:10px;background:#ff4d4d;"
+        onclick="window.location.href='deleteAccount.jsp'">
+        MOVE AWAY
+        </button>
+    </form>
+
+    <p class="toggle-link">
+        New to Pizza Becod?
+        <span onclick="showSignup()">Create Account</span>
+    </p>
+    <p class="toggle-link">Did you forgot??
+    <a href="forgotPassword.jsp" 
+       style="color:#ffbe33; font-size:13px; text-decoration:none;">
+       Forgot Password?
+    </a>
+</p>
+</div>
+
+    </div>
+
+        <div id="signup-form">
+        <h2>SIGN UP</h2>
+
+        
+        <form action="signup.jsp" method="post">
+
+    <div class="input-group">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" name="name" placeholder="Full Name" required>
+    </div>
+
+    <div class="input-group">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" name="email" placeholder="Email Address" required>
+    </div>
+
+    <div class="input-group">
+        <i class="fa-solid fa-phone"></i>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+    </div>
+
+    <div class="input-group">
+        <i class="fa-solid fa-location-dot"></i>
+        <input type="text" name="address" placeholder="Address" required>
+    </div>
+
+    <div class="input-group">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" name="password" placeholder="Create Password" minlength="6" required>
+    </div>
+
+    <button class="btn" type="submit">REGISTER NOW</button>
+
+</form>
+
+        <p class="toggle-link">
+            Already a member?
+            <span onclick="showLogin()">Login here</span>
+        </p>
+    </div>
+
+    <a href="index.html" class="back-home">← Back to Home</a>
+</div>
+
+<script>
+    const loginSection = document.getElementById("login-container");
+    const signupSection = document.getElementById("signup-form");
+
+    let users = JSON.parse(localStorage.getItem("users"));
+
+    if (!users) {
+        users = [
+            { name: "Admin", email: "admin@gmail.com", password: "admin123" }
+        ];
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    
+    function isValidEmail(email) {
+        let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return pattern.test(email);
+    }
+
+    function showSignup() {
+        loginSection.style.display = "none";
+        signupSection.style.display = "block";
+    }
+
+    function showLogin() {
+        signupSection.style.display = "none";
+        loginSection.style.display = "block";
+    }
+
+     function registerUser() {
+        let name = document.getElementById("su-name").value;
+        let email = document.getElementById("su-email").value;
+        let phone = document.getElementById("su-phone").value;
+        let address = document.getElementById("su-address").value;
+        let password = document.getElementById("su-password").value;
+
+        if (name === "" || email === "" || phone === "" || address === "" || password === "") {
+            alert("All fields are required");
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            alert("Invalid email format");
+            return;
+        }
+
+        if (!/^[0-9]{10}$/.test(phone)) {
+            alert("Enter valid 10-digit phone number");
+            return;
+        }
+
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters");
+            return;
+        }
+
+        for (let user of users) {
+            if (user.email === email) {
+                alert("Email already registered");
+                return;
+            }
+        }
+
+        users.push({
+            name: name,
+            email: email,
+            phone: phone,
+            address: address,
+            password: password
+        });
+
+        localStorage.setItem("users", JSON.stringify(users));
+
+        alert("Registration successful!");
+        showLogin();
+    }
+
+    
+
+
+</script>
+
+
+</body>
+</html>

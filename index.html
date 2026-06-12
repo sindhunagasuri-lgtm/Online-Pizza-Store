@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Becod | The Art of Italian Pizza</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ffbe33;
+            --secondary: #ff4d4d;
+            --dark: #121212;
+            --card-bg: #1e1e1e;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { box-sizing: border-box; transition: all 0.3s ease; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background: var(--dark); color: #fff; scroll-behavior: smooth; overflow-x: hidden; }
+
+        /* Header */
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 8%; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .logo { font-size: 26px; font-weight: bold; color: var(--secondary); text-decoration: none; }
+        .nav-links a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: 600; font-size: 0.9rem; }
+        
+        /* Hero Section */
+        .hero { 
+            display: flex; align-items: center; justify-content: space-around; 
+            padding: 50px 8%; min-height: 90vh; background: radial-gradient(circle at 70%, #2c2c2c 0%, #121212 100%);
+        }
+        .hero-text h1 { font-size: 4rem; color: var(--primary); line-height: 1.1; margin-bottom: 20px; }
+        .pizza-display { width: 450px; height: 450px; position: relative; }
+        .rotating-pizza { 
+            width: 100%; animation: rotatePizza 40s linear infinite; 
+            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.8));
+        }
+        @keyframes rotatePizza { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* This stops the rotation when the mouse is over the pizza container */
+        .pizza-display:hover .rotating-pizza { 
+          animation-play-state: paused; 
+          cursor: pointer;
+        }
+
+        /* Sections */
+        .section { padding: 80px 8%; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .info-card { background: var(--glass); padding: 40px; border-radius: 20px; border: 1px solid #333; }
+        .info-card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
+
+        /* Specials */
+        .specials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { 
+            background: var(--card-bg); border-radius: 25px; overflow: hidden; 
+            text-align: center; border: 1px solid #333; position: relative;
+        }
+        .card img { width: 100%; height: 250px; object-fit: cover; opacity: 0.8; }
+        .card:hover img { opacity: 1; transform: scale(1.05); }
+        .card-content { padding: 25px; }
+
+        /* Footer */
+        .footer-content { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 40px; background: #080808; padding: 80px 8% 40px; border-top: 2px solid #222;
+        }
+        .contact-item { display: flex; align-items: center; margin-bottom: 15px; color: #bbb; }
+        .contact-item i { margin-right: 15px; color: var(--primary); }
+        
+        .btn-add { 
+            background: var(--primary); border: none; padding: 12px 25px; 
+            border-radius: 30px; font-weight: bold; cursor: pointer; color: #000;
+            display: inline-block; text-decoration: none;
+        }
+        .btn-add:hover { background: #fff; transform: translateY(-3px); }
+        .social-icons a { color: #fff; font-size: 1.5rem; margin-right: 20px; }
+        
+        /* Specific Style for Login Button */
+.btn-login { 
+    background: var(--secondary); /* This uses the red color #ff4d4d */
+    border: none; 
+    padding: 10px 25px; 
+    border-radius: 30px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    color: #fff; /* White text looks better on red */
+    display: inline-block; 
+    text-decoration: none;
+}
+
+.btn-login:hover { 
+    background: #fff; 
+    color: var(--secondary); 
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px var(--primary);
+}
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">PIZZA<span style="color:#fff">BECOD</span></a>
+        <nav class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#story">OUR STORY</a>
+            <a href="#specials">SPECIALS</a>
+            <a href="#contact">CONTACT</a>
+            <a href="feedback">FEEDBACK</a>
+            <a href="login.html" class="btn-login">LOGIN</a>
+        </nav>
+    </header>
+
+   <section class="hero" id="home">
+    <div class="hero-text">
+        <span style="color: var(--secondary); font-weight: bold; letter-spacing: 2px;">SINCE 1998</span>
+        <h1>CRAFTING THE<br>PERFECT CRUST</h1>
+        <p style="color: #bbb; font-size: 1.1rem; max-width: 500px; margin-bottom: 30px;">
+            Experience the authentic taste of wood-fired Italian pizza. Built on the belief that every slice should be a celebration.
+        </p>
+        <a href="#story" class="btn-add" style="padding: 15px 40px;">EXPLORE OUR STORY</a>
+    </div>
+    <div class="pizza-display">
+        <img src="images/pizza_PNG44093.png" class="rotating-pizza" alt="Signature Pizza">
+    </div>
+</section>
+
+<section class="section" id="story">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <span style="color: var(--secondary); font-weight: bold; letter-spacing: 3px; text-transform: uppercase;">Our Legacy</span>
+        <h2 style="font-size: 2.5rem; margin-top: 10px;">The Soul of Pizza Becod</h2>
+    </div>
+
+    <div class="about-grid">
+        <div class="info-card">
+            <i class="fa-solid fa-fire-burner"></i>
+            <h2>Traditional Wood-Fire</h2>
+            <p style="color: #aaa; margin-top: 10px;">Our hand-built brick ovens are kept at a constant 800°F. This intense heat creates the iconic "leopard-spotted" char and a crust that is airy, yet crisp.</p>
+        </div>
+
+        <div class="info-card">
+            <i class="fa-solid fa-leaf"></i>
+            <h2>Farm-to-Table</h2>
+            <p style="color: #aaa; margin-top: 10px;">We don't believe in cans. Our San Marzano tomatoes are crushed daily, and our basil is picked from local greenhouses every morning at dawn.</p>
+        </div>
+
+        <div class="info-card">
+            <i class="fa-solid fa-clock"></i>
+            <h2>The 48-Hour Secret</h2>
+            <p style="color: #aaa; margin-top: 10px;">Patience is our main ingredient. Our dough undergoes a slow 48-hour cold fermentation process, resulting in a flavor profile that is deep, complex, and easy to digest.</p>
+        </div>
+
+        <div class="info-card">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <h2>Crafted with Love</h2>
+            <p style="color: #aaa; margin-top: 10px;">Every pizza is hand-stretched and tossed by our master chefs. No rollers, no machines—just the human touch and a passion for authentic Italian art.</p>
+        </div>
+    </div>
+</section>
+
+    <section class="section" id="specials" style="background: #181818;">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--primary);">Chef's Weekly Specials</h2>
+        <div class="specials-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600" alt="Truffle Pizza">
+                <div class="card-content">
+                    <h3>The Truffle Shuffle</h3>
+                    <p style="color: #888; margin: 10px 0;">Black truffle oil, wild mushrooms, and fresh mozzarella.</p>
+                    <p style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 15px;">240.00</p>
+                    <a href="login.html" class="btn-add">Explore Deal</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/hot honey.jpg" alt="Hot Honey">
+                <div class="card-content">
+                    <h3>Hot Honey Pepperoni</h3>
+                    <p style="color: #888; margin: 10px 0;">Spicy pepperoni drizzled with our signature hot chili honey.</p>
+                    <p style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 15px;">210.00</p>
+                    <a href="login.html" class="btn-add">Explore Deal</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?q=80&w=600" alt="Garden Bliss">
+                <div class="card-content">
+                    <h3>Garden Bliss</h3>
+                    <p style="color: #888; margin: 10px 0;">Roasted bell peppers, olives, feta, and spinach base.</p>
+                    <p style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 15px;">190.00</p>
+                    <a href="login.html" class="btn-add">Explore Deal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div>
+                <h3 style="color: var(--primary); margin-bottom: 20px;">PIZZA BECOD</h3>
+                <p style="color: #888; line-height: 1.6;">Bringing the authentic taste of Naples to your doorstep. Quality is our main ingredient.</p>
+                <div class="social-icons" style="margin-top: 20px;">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 20px;">Contact Us</h3>
+                <div class="contact-item"><i class="fa-solid fa-location-dot"></i> White Town, Saint Louis Street , Pizza BECOD , Puducherry</div>
+                <div class="contact-item"><i class="fa-solid fa-phone"></i> +91 9849838446</div>
+                <div class="contact-item"><i class="fa-solid fa-envelope"></i> hello@pizzabecod.com</div>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 20px;">Opening Hours</h3>
+                <p style="color: #bbb;">Mon - Thu: 11:00 AM - 10:00 PM</p>
+                <p style="color: #bbb;">Fri - Sun: 11:00 AM - 11:30 PM</p>
+            </div>
+        </div>
+        <div style="text-align: center; padding: 30px; border-top: 1px solid #222; color: #555; font-size: 0.8rem;">
+            &copy; 2026 Pizza Becod. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
